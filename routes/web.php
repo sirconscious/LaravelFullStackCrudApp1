@@ -17,3 +17,5 @@ Route::get('/profiles',[ProfilesCo::class,'index'])->name('profiles.index');
 Route::get('/profile/{profile:id}',[profileId::class , 'index'])->name('profile.index');
 //route for the form to create a profile 
 Route::get('/create',[create::class,'index'])->name('create.index');
+//route to add profile to db 
+Route::get('/add',[create::class,'add'])->name('create.add');

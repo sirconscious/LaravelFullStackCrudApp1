@@ -1,5 +1,5 @@
 <div class="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
-    <form action="" class="space-y-4">
+    <form action="{{route('create.add')}}" class="space-y-4">
         <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
             <input type="text" name="name" id="name" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">

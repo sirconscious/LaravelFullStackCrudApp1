@@ -3,4 +3,5 @@
     <h1>Name : {{$profile->name}}</h1>
     <p>Email : {{$profile->email}}</p>
     <p>Bio :  {{Str::limit($profile->bio,10)}}</p>
+    <a href="{{route("profile.index",$profile->id)}}" class=" text-blue-500">See more....</a>
 </div>

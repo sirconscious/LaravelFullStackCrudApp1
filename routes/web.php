@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\create;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\profileId;
 use App\Http\Controllers\ProfilesCo;
@@ -14,3 +15,5 @@ Route::get('/home',[homeController::class,'index'])->name('home.index') ;
 Route::get('/profiles',[ProfilesCo::class,'index'])->name('profiles.index');
 //route to get more details about a profile
 Route::get('/profile/{profile:id}',[profileId::class , 'index'])->name('profile.index');
+//route for the form to create a profile 
+Route::get('/create',[create::class,'index'])->name('create.index');

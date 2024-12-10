@@ -4,24 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Profiles;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Profiler\Profile;
+use Illuminate\Support\Facades\Hash;
 
 class create extends Controller
 {
     public function index(){
         return view('createPage');
     }
+    
     public function add(Request $request){
-        $name = $request->name ;
-        $email = $request->email ;
-        $password = $request->password ;
-        $bio = $request->bio;
-        Profiles::create([
-            'name'=> $name ,
-            'email'=>$email ,
-            'password'=>$password ,
-            'bio'=>$bio
+        //form validation
+        $formFileds = $request->validate([
+            "name" => 'required|string|min:5|max:20',
+            "email" => 'required|email|unique:profiles',
+            "password" => 'required|string|min:5|max:30|confirmed',
+            "bio" => 'required|string'
         ]);
-       return redirect()->route('profiles.index');
+        //password Hashing
+        $formFileds["password"] = Hash::make($formFileds["password"]);
+        //profile creating
+        Profiles::create($formFileds);
+        
+        return redirect()->route('profiles.index');
     }
 }
+

@@ -24,7 +24,7 @@ class create extends Controller
         $formFileds["password"] = Hash::make($formFileds["password"]);
         //profile creating
         Profiles::create($formFileds);
-        
+
         return redirect()->route('profiles.index');
     }
 }

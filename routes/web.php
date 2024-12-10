@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\create;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\loginController;
 use App\Http\Controllers\profileId;
 use App\Http\Controllers\ProfilesCo;
 use Illuminate\Support\Facades\Route;
@@ -19,3 +20,6 @@ Route::get('/profile/{profile:id}',[profileId::class , 'index'])->name('profile.
 Route::get('/create',[create::class,'index'])->name('create.index');
 //route to add profile to db 
 Route::get('/add',[create::class,'add'])->name('create.add');
+//route for login form
+Route::get('/login',[loginController::class , "show"])->name('login.show');
+Route::post('/login',[loginController::class , "login"])->name('login.login');

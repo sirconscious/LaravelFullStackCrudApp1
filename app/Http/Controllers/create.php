@@ -24,8 +24,8 @@ class create extends Controller
         $formFileds["password"] = Hash::make($formFileds["password"]);
         //profile creating
         Profiles::create($formFileds);
-
-        return redirect()->route('profiles.index');
+        //ading the flashbag when a profile is added succesfuly
+        return redirect()->route('profiles.index')->with('success','the profile is added with succes');
     }
 }
 

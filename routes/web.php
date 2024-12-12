@@ -23,3 +23,5 @@ Route::get('/add',[create::class,'add'])->name('create.add');
 //route for login form
 Route::get('/login',[loginController::class , "show"])->name('login.show');
 Route::post('/login',[loginController::class , "login"])->name('login.login');
+//route for logoute
+Route::get('/logout',[loginController::class , 'logout'])->name('login.logout');

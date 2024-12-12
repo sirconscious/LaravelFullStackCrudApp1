@@ -6,5 +6,12 @@
     <a href="{{route("home.index")}}" class=" hover:text-blue-700">Home</a>
     <a href="{{route("profiles.index")}}" class=" hover:text-blue-700">Profiles</a>
     <a href="{{route('create.index')}}" class=" hover:text-blue-700">Add Profile</a>
+    @auth
+    <a href="{{route('login.logout')}}">Logout</a>
+
+    @endauth
+    @guest
     <a href="{{route('login.show')}}">Login</a>
+
+    @endguest
 </nav>

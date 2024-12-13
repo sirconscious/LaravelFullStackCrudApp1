@@ -25,3 +25,5 @@ Route::get('/login',[loginController::class , "show"])->name('login.show');
 Route::post('/login',[loginController::class , "login"])->name('login.login');
 //route for logoute
 Route::get('/logout',[loginController::class , 'logout'])->name('login.logout');
+//route for delete
+Route::delete('/profile/{profile}',[ProfilesCo::class , 'delete'])->name('profile.delete');

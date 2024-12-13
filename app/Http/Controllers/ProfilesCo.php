@@ -12,4 +12,8 @@ class ProfilesCo extends Controller
         // dd($profiles);
         return view('profilesPage',compact('profiles')) ;
     }
+    public function delete(Profiles $profile){
+        $profile->delete();
+        return back();
+    }
 }

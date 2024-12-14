@@ -27,3 +27,8 @@ Route::post('/login',[loginController::class , "login"])->name('login.login');
 Route::get('/logout',[loginController::class , 'logout'])->name('login.logout');
 //route for delete
 Route::delete('/profile/{profile}',[ProfilesCo::class , 'delete'])->name('profile.delete');
+//routes to update a profile ==>
+//Route for the view 
+Route::get('/profile/{profile}/edit',[ProfilesCo::class , 'edit'])->name('profile.edit');
+//Route to update 
+Route::put('profile/{profile}' , [ProfilesCo::class , 'update'])->name('profile.update') ;

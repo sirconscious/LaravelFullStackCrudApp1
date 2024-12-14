@@ -9,4 +9,8 @@
         @method("DELETE")
         <button type="submit">Delete</button>
     </form>
+    <form action="{{route("profile.edit" , $profile->id)}}" method="GET">
+        @csrf
+        <button type="submit">Modifier</button>
+    </form>
 </div>

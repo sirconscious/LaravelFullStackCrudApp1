@@ -8,6 +8,6 @@ class Profiles extends Model
 {
     use HasFactory;
     protected $fillable = array(
-        "name" , "email" ,"bio" , "password"
+        "name" , "email" ,"bio" , "password" ,"image"
     ) ;
 }

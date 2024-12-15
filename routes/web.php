@@ -19,7 +19,7 @@ Route::get('/profile/{profile:id}',[profileId::class , 'index'])->name('profile.
 //route for the form to create a profile 
 Route::get('/create',[create::class,'index'])->name('create.index');
 //route to add profile to db 
-Route::get('/add',[create::class,'add'])->name('create.add');
+Route::post('/add',[create::class,'add'])->name('create.add');
 //route for login form
 Route::get('/login',[loginController::class , "show"])->name('login.show');
 Route::post('/login',[loginController::class , "login"])->name('login.login');

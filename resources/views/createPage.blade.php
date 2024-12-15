@@ -4,4 +4,5 @@
 @endsection
 @section('content')
     <x-form1 />
+    {{-- @csrf --}}
 @endsection

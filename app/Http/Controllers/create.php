@@ -13,13 +13,20 @@ class create extends Controller
     }
     
     public function add(Request $request){
+        // dd($request->file('image'));
+
         //form validation
         $formFileds = $request->validate([
             "name" => 'required|string|min:5|max:20',
             "email" => 'required|email|unique:profiles',
             "password" => 'required|string|min:5|max:30|confirmed',
-            "bio" => 'required|string'
+            "bio" => 'required|string',
+            'image' => 'required|image|mimes:png,svg,jpg,jpeg|max:10240',
+
+
         ]);
+        //storing the image
+        $formFileds["image"] = $request->file("image")->store("profile",'public');
         //password Hashing
         $formFileds["password"] = Hash::make($formFileds["password"]);
         //profile creating

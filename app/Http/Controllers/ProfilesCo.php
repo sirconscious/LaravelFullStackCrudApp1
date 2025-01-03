@@ -29,8 +29,11 @@ class ProfilesCo extends Controller
             "image"=>'required|image|mimes:png,svg,jpg,jpeg|max:10240'
         ]);
         $formFileds["password"] = Hash::make($formFileds["password"]);
+        //to update the image 
+        $formFileds["image"] = $request->file("image")->store("profile",'public');
         // to update in db 
          $profile->fill($formFileds)->save() ;
+
          //redirect to index
         //  dd($profile);
          return redirect()->route('profiles.index')->with('success','the profile is updated with succes');

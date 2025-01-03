@@ -21,9 +21,10 @@ class profilesFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'email'=> fake()->unique()->safeEmail(),
-            'password'=>static::$password ??= Hash::make('password'),
-            "bio"=>fake()->text()
+            'email' => fake()->unique()->safeEmail(),
+            'password' => static::$password ??= Hash::make('password'),
+            "bio" => fake()->text(),
+            'image' => "https://picsum.photos/200/300"// Providing a default image URL
         ];
     }
 }

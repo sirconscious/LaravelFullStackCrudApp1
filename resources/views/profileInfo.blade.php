@@ -3,26 +3,12 @@
     Profile
 @endsection
 @section('content')
-    <div class="p-6">
-        <div class="overflow-x-auto">
-            <table class="min-w-full border border-gray-300 text-left table-auto">
-                <thead class="bg-slate-400 text-white">
-                    <tr>
-                        <th class="py-2 px-4 border-b">Id</th>
-                        <th class="py-2 px-4 border-b">Name</th>
-                        <th class="py-2 px-4 border-b">Email</th>
-                        <th class="py-2 px-4 border-b">Bio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="py-2 px-4 border-b">{{$prof->id}}</td>
-                        <td class="py-2 px-4 border-b">{{$prof->name}}</td>
-                        <td class="py-2 px-4 border-b">{{$prof->email}}</td>
-                        <td class="py-2 px-4 border-b text-wrap max-w-[500px]">{{$prof->bio}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <img src="{{asset("storage/".$prof->image)}}" width="300" class="mx-auto rounded-full" alt="im">
+        <p class="text-2xl font-bold text-center">{{$prof->name}}</p>
+        <p class="text-gray-600 text-center">{{$prof->email}}</p>
+        <p class="text-gray-600 text-center">{{$prof->created_at->format("d-m-Y")}}</p>
+        <p class="text-gray-600 text-center">{{$prof->bio}}</p>    
     </div>
 @endsection
+

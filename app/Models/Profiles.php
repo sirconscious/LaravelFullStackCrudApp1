@@ -10,6 +10,7 @@ class Profiles extends Model
 {
     use HasFactory;
     use SoftDeletes ;
+    protected $date =["created_at"];
     protected $fillable = array(
         "name" , "email" ,"bio" , "password" ,"image"
     ) ;

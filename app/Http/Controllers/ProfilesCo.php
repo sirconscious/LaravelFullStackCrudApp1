@@ -26,11 +26,13 @@ class ProfilesCo extends Controller
             "email" => 'required|email',
             "password" => 'required|string|min:5|max:30|confirmed',
             "bio" => 'required|string',
-            "image"=>'required|image|mimes:png,svg,jpg,jpeg|max:10240'
+            "image"=>'image|mimes:png,svg,jpg,jpeg|max:10240'
         ]);
         $formFileds["password"] = Hash::make($formFileds["password"]);
         //to update the image 
-        $formFileds["image"] = $request->file("image")->store("profile",'public');
+        if ($request->hasFile('image')) {
+            $formFileds["image"] = $request->file("image")->store("profile",'public');
+        }
         // to update in db 
          $profile->fill($formFileds)->save() ;
 

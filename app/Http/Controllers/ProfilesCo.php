@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Profiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Routing\Controller as BaseController;
 
-class ProfilesCo extends Controller
+class ProfilesCo  extends BaseController 
 {
+    //add middleware
+    public function __construct() {
+        $this->middleware('auth')->except(["index"]) ;
+    }
     public function index(){
         $profiles = Profiles::paginate(12);
         // dd($profiles);

@@ -10,4 +10,8 @@ class Publication extends Model
 
 {
     use HasFactory , SoftDeletes;
+    protected $date =["created_at"];
+    protected $fillable = array(
+        "title"  ,"body","image"
+    ) ;
 }

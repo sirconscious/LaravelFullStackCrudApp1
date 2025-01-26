@@ -5,6 +5,11 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\profileId;
 use App\Http\Controllers\ProfilesCo;
+use App\Http\Controllers\PublicationController;
+use App\Models\Publication;
+use Illuminate\Http\Client\Request as ClientRequest;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
@@ -57,4 +62,42 @@ Route::get('/home',[homeController::class,'index'])->name('home.index')->middlew
             Route::get('/logout','logout')->name('.logout');
         }) ;
     });
+// //cookies 
+// Route::get('/cookie/set/{cookie}', function ($cookie) {
+//     $cookieObject = cookie('age', $cookie, 5); // 'age' is the name, $cookie is the value, 5 is the duration in minutes
+//     return response('Cookie set successfully!')->cookie($cookieObject);
+// });
+Route::get('/cookie/set/{cookie}', function ($cookie) {
+    $response =  new Response("Cookie set successfully !",200) ;
     
+    $cookieObject = cookie()->forever('name', $cookie);//400  // 'age' is the name, $cookie is the value, 5 is the duration in minutes
+    return $response->withCookie($cookieObject);
+});
+
+Route::get('cookie/get', function(Request $request){
+    return dd($request->cookie("name"));
+});
+//headers 
+Route::get('/headers', function (Request $request) {
+    $response =  new Response([
+        "data" => "ok"
+    ]) ;
+    dd($request->header("host")) ;
+    return $response->withHeaders([
+        "Content-Type"=>"Application/json",
+        "X-Mehdi" => "Nice" 
+    ]);
+});
+//request
+Route::get("/request", function(Request $request){
+    // dd($request->url() , $request->fullUrl()) ;
+    // dd($request->path()) ;
+    // dd($request->is("request")) ;
+    // dd($request->host()) ;
+    //  dd($request->method()) ;
+    //  dd($request->isMethod("GET")) ;
+    dd($request->ip()) ;
+}) ;
+
+//publications 
+Route::resource("publications" , PublicationController::class);

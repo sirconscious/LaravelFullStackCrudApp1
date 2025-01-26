@@ -52,15 +52,21 @@ class PublicationController extends Controller
      */
     public function edit(Publication $publication)
     {
-        //
-    }
+        return view("publications.edit",compact("publication"));
+        }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Publication $publication)
+    public function update(PublicationRequest $request, Publication $publication)
     {
-        //
+        $formFileds = $request->validated();
+        unset($formFileds["image"]) ;
+        if ($request->hasFile("image")) {
+            $formFileds["image"] = $request->file("image")->store("publication",'public'); 
+        }  
+        $isUpdated = $publication->fill($formFileds)->save();
+        dd($isUpdated) ;
     }
 
     /**

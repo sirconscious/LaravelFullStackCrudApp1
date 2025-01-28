@@ -11,9 +11,10 @@ class PublicationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $publications =  Publication::latest()->get() ;
+        return view("publications.index" ,compact("publications")) ;
     }
 
     /**
@@ -66,7 +67,7 @@ class PublicationController extends Controller
             $formFileds["image"] = $request->file("image")->store("publication",'public'); 
         }  
         $isUpdated = $publication->fill($formFileds)->save();
-        dd($isUpdated) ;
+        return  to_route("publications.index");
     }
 
     /**
@@ -74,6 +75,7 @@ class PublicationController extends Controller
      */
     public function destroy(Publication $publication)
     {
-        //
+        $publication->delete();
+        return to_route("publications.index");
     }
 }

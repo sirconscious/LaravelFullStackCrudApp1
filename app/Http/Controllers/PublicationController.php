@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PublicationRequest;
 use App\Models\Publication;
 use Illuminate\Http\Request;
-
-class PublicationController extends Controller
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth ;
+class PublicationController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(["index"]) ;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,6 +37,7 @@ class PublicationController extends Controller
     {
 
         $formFileds = $request->validated();
+        $formFileds["profile_id"] = Auth::id() ;
         unset($formFileds["image"]) ;
         if ($request->hasFile("image")) {
             $formFileds["image"] = $request->file("image")->store("publication",'public'); 

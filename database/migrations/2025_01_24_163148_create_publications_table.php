@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string("title" ,150 ) ;
             $table->text("body") ; 
-            $table->string("image")->nullable() ;
+            $table->string("image")->nullable() ; 
+            $table->unsignedBigInteger("profiles_id")  ;  // Here i Changed the data type to match the 'id' column in 'profiles' table
+            $table->foreign("profiles_id")->references("id")->on("profiles") ;
             $table->softDeletes() ;
             $table->timestamps();
         });

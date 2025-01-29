@@ -10,5 +10,9 @@
         <p class="text-gray-600 text-center">{{$prof->created_at->format("d-m-Y")}}</p>
         <p class="text-gray-600 text-center">{{$prof->bio}}</p>    
     </div>
+    {{-- {{dd($prof->publications)}} --}}
+    @foreach ($prof->publications as $publication )
+        <x-publication-card :publication="$publication" class="flex-none" />
+    @endforeach
+    
 @endsection
-

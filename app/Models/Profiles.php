@@ -14,4 +14,8 @@ class Profiles extends Model
     protected $fillable = array(
         "name" , "email" ,"bio" , "password" ,"image"
     ) ;
+    public function publications(){
+       return  $this->hasMany(Publication::class);
+    }
+
 }

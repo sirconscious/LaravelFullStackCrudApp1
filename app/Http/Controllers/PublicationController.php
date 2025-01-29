@@ -37,12 +37,14 @@ class PublicationController extends BaseController
     {
 
         $formFileds = $request->validated();
-        $formFileds["profile_id"] = Auth::id() ;
+        // dd(Auth::id()) ;
+        $formFileds["profiles_id"] = Auth::id() ;
+        // dd($formFileds["profiles_id"]) ;
         unset($formFileds["image"]) ;
         if ($request->hasFile("image")) {
             $formFileds["image"] = $request->file("image")->store("publication",'public'); 
         }
-        Publication::create($formFileds);
+          Publication::create($formFileds);
         return to_route("publications.index");
     }
 

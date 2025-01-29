@@ -6,7 +6,7 @@
         <p class="text-gray-600">{{$publication->body}}</p>
         <img src="{{asset("storage/".$publication->image)}}" height=300 width=400 alt="" class="">
         @auth
-        @if (Auth::id() == $publication->profile_id)
+        @if (Auth::id() == $publication->profiles_id)
             
         <a href="{{route("publications.edit",$publication->id)}}">Edit Publication</a>
         <form action="{{route("publications.destroy",$publication->id)}}" method="POST"> @csrf @method("DELETE")

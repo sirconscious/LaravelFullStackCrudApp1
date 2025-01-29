@@ -15,7 +15,7 @@ class Profiles extends Model
         "name" , "email" ,"bio" , "password" ,"image"
     ) ;
     public function publications(){
-       return  $this->hasMany(Publication::class);
+        return $this->hasMany(Publication::class, "profiles_id");
     }
 
 }

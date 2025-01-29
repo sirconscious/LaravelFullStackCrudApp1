@@ -14,4 +14,7 @@ class Publication extends Model
     protected $fillable = array(
         "title"  ,"body","image" , "profiles_id"
     ) ;
-}
+    public function profile(){
+        return $this->belongsTo(Profiles::class, "profiles_id", "id");
+    }
+    }

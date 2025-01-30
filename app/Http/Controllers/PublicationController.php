@@ -75,7 +75,7 @@ class PublicationController extends BaseController
         // Gate::denyIf(Auth::id() !== $publication->profiles_id) ;
         //same as above
 
-        Gate::authorize("upadte-publication", $publication); 
+        Gate::authorize("update", $publication); 
         return view("publications.edit",compact("publication"));
     
     }

@@ -7,6 +7,8 @@ use App\Models\Publication;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth ;
+use Illuminate\Support\Facades\Gate;
+
 class PublicationController extends BaseController
 {
     public function __construct()
@@ -61,8 +63,22 @@ class PublicationController extends BaseController
      */
     public function edit(Publication $publication)
     {
+        //checking authorization for edit action
+        // if(Gate::allows("upadte-publication", $publication)){
+        //     return view("publications.edit",compact("publication"));
+
+        // }else{
+        //     //display a authorization error
+        //     return abort(403);
+        // }   
+        // Gate::allowIf(Auth::id() == $publication->profiles_id) ;
+        // Gate::denyIf(Auth::id() !== $publication->profiles_id) ;
+        //same as above
+
+        Gate::authorize("upadte-publication", $publication); 
         return view("publications.edit",compact("publication"));
-        }
+    
+    }
 
     /**
      * Update the specified resource in storage.

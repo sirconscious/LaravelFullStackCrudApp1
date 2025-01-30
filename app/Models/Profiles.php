@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Profiles extends Model
+class Profiles extends User
 {
     use HasFactory;
     use SoftDeletes ;

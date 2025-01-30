@@ -11,13 +11,21 @@
         <h2 class="text-2xl font-bold">{{$publication->title}}</h2>
         <p class="text-gray-600">{{$publication->body}}</p>
         <img src="{{asset("storage/".$publication->image)}}" height=300 width=400 alt="" class="">
-        @auth
+        {{-- @auth
         @if (Auth::id() == $publication->profiles_id)
         <a href="{{route("publications.edit",$publication->id)}}">Edit Publication</a>
         <form action="{{route("publications.destroy",$publication->id)}}" method="POST"> @csrf @method("DELETE")
             <button type="submit" onclick="return confirm('Are you sure you want to delete this publication?')">Delete</button}}"></form>
                 @endif
 
-        @endauth
+        @endauth  --}}
+        @can('update', $publication)
+        <a href="{{route("publications.edit",$publication->id)}}">Edit Publication</a>
+        @endcan
+        @can('delete', $publication)
+        <form action="{{route("publications.destroy",$publication->id)}}" method="POST"> @csrf @method("DELETE")
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this publication?')">Delete</button}}"></form>
+
+        @endcan
 </div> 
 

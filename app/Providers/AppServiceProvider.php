@@ -40,4 +40,7 @@ class AppServiceProvider extends ServiceProvider
        Gate::policy(Publication::class, PublicationPolicy::class)  ;
 
     }
+    // public function before(User $user, string $ability ) {
+    //  
+    // }
 }

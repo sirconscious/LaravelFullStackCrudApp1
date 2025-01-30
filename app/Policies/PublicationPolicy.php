@@ -37,7 +37,7 @@ class PublicationPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(GenericUser $profiles, Publication $publication): bool
+    public function update(Profiles $profiles, Publication $publication): bool
     {
     
         return $profiles->id == $publication->profiles_id;
@@ -46,9 +46,9 @@ class PublicationPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Publication $publication): bool
-    {
-        return false;
+    public function delete(Profiles $profiles, Publication $publication): bool
+    { 
+        return $profiles->id == $publication->profiles_id;
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ProfileControlelr;
+use App\Http\Middleware\HandleExceptions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

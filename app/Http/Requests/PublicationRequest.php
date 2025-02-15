@@ -22,9 +22,9 @@ class PublicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title"=>"required|min:5|max:100"  ,
-            "body"=>"required|min:10"  ,
-            'image' => 'image|mimes:png,svg,jpg,jpeg|max:10240'
+            // "title"=>"required|min:5|max:100"  ,
+            // "body"=>"required|min:10"  ,
+            // 'image' => 'image|mimes:png,svg,jpg,jpeg|max:10240'
 
         ];
     }

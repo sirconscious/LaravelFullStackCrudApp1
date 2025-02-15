@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProfileRessource;
 use App\Models\Profiles;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -13,10 +14,10 @@ class ProfileControlelr extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Collection
+    public function index()
     {
     
-        return Profiles::all();
+        return  ProfileRessource::collection(Profiles::all());
     }
 
     /**
@@ -36,8 +37,8 @@ class ProfileControlelr extends Controller
      */
     public function show(Profiles $profile ,Request $request)
     {   
-
-        return  $profile;
+        return new ProfileRessource($profile);
+        // return  $profile;
     }
 
     /**
